@@ -41,8 +41,6 @@ TZ=America/Sao_Paulo
 ```
 docker-compose up --build
 ```
-### Endpoints
 
-## Create Report
 
 
