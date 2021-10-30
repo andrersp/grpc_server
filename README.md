@@ -15,9 +15,9 @@ FLASK_ENV="development"
 
 
 EXTENSIONS = [
-    "grpc_server.blueprints.v1",
-    "grpc_server.ext.database",
-    "grpc_server.ext.commands"
+    "app.blueprints.v1",
+    "app.ext.database",
+    "app.ext.commands"
     
 ]
 
@@ -31,7 +31,7 @@ Create a file **.env** to store secrets.
 
 ```
 FLASK_ENV=development
-FLASK_APP=grpc_server/app.py
+FLASK_APP=app/app.py
 TZ=America/Sao_Paulo
 
 ```

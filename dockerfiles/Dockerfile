@@ -18,4 +18,4 @@ RUN rm -rf /var/cache/apt/archives && rm -rf /var/lib/apt/lists/*
 
 COPY . ./
 
-CMD ["gunicorn", "-w", "2", "--bind", ":5000", "grpc_server.app:create_app()"]
+CMD ["gunicorn", "-w", "2", "--bind", ":5000", "app.app:create_app()"]

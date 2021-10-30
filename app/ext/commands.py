@@ -1,4 +1,4 @@
-from grpc_server.ext.database import db
+from app.ext.database import db
 
 
 def create_db():

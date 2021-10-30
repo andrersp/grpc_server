@@ -19,4 +19,4 @@ RUN rm -rf /var/cache/apt/archives && rm -rf /var/lib/apt/lists/*
 
 COPY . ./
 
-CMD ["celery", "-A", "grpc_server.celery_app.runcelery:celery", "worker", "--loglevel", "INFO"]
+CMD ["celery", "-A", "app.celery_app.runcelery:celery", "worker", "--loglevel", "INFO"]

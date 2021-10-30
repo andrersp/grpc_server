@@ -1,10 +1,10 @@
 from flask_restful import Resource
 from flask import request
 
-from grpc_server.utils.http_responses import success, error
+from app.utils.http_responses import success, error
 
-from grpc_server.core.validate import Validate
-from grpc_server.celery_app.tasks import requester
+from app.core.validate import Validate
+from app.celery_app.tasks import requester
 
 
 # Fix: Usar Exception do projeto

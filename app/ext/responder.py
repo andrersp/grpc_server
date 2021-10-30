@@ -3,7 +3,7 @@
 from requests import post
 import json
 
-from grpc_server.core.exceptions import FatalError
+from app.core.exceptions import FatalError
 
 
 class Responder(object):

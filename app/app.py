@@ -3,7 +3,7 @@ from .ext import config
 
 from celery import Celery
 
-celery = Celery('grpc_server', config_source='grpc_server.celery_app.celeryconfig')
+celery = Celery('app', config_source='app.celery_app.celeryconfig')
 
 
 def minimal_app():

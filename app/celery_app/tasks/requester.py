@@ -3,10 +3,10 @@ from sentry_sdk import capture_exception
 import arrow
 from datetime import datetime
 
-from grpc_server.app import celery
-from grpc_server.ext.responder import Responder
-from grpc_server.core.exceptions import CustomError, FatalError
-from grpc_server.models.target import ModelTarget
+from app.app import celery
+from app.ext.responder import Responder
+from app.core.exceptions import CustomError, FatalError
+from app.models.target import ModelTarget
 from celery.exceptions import MaxRetriesExceededError
 
 

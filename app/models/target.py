@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from grpc_server.ext.database import db
+from app.ext.database import db
 from sqlalchemy_serializer import SerializerMixin
 
 

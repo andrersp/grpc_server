@@ -1,4 +1,4 @@
-from grpc_server.utils.schemas.retrieve import RetrieveSchema
+from app.utils.schemas.retrieve import RetrieveSchema
 from marshmallow.exceptions import ValidationError
 
 

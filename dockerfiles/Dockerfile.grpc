@@ -4,6 +4,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 WORKDIR /app
+
 COPY ./requirements.txt /app
 
 RUN apt-get update && apt-get install libpq-dev gcc  -y
@@ -18,4 +19,4 @@ RUN rm -rf /var/cache/apt/archives && rm -rf /var/lib/apt/lists/*
 
 COPY . ./
 
-CMD ["gunicorn", "-w", "2", "--reload", "--bind", ":5000", "app.app:create_app()"]
+CMD ["python", "grpc_server/server.py"]

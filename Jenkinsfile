@@ -31,7 +31,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://registry.digitalocean.com', 'docker_credentials-do') {
-                        def customImage = docker.build("staging-dh/grpc_server-dev:${BUILD_NUMBER}", "-f dockerfiles/Dockerfile .")
+                        def customImage = docker.build("staging-dh/app-dev:${BUILD_NUMBER}", "-f dockerfiles/Dockerfile .")
 
                         /* Push the container to the custom Registry */
                         customImage.push()
@@ -45,7 +45,7 @@ pipeline {
                 script {
                     docker.withRegistry('https://registry.digitalocean.com', 'docker_credentials-do') {
 
-                        def customImage = docker.build("staging-dh/grpc_server-dev-celery:${BUILD_NUMBER}", "-f dockerfiles/Dockerfile.celery .")
+                        def customImage = docker.build("staging-dh/app-dev-celery:${BUILD_NUMBER}", "-f dockerfiles/Dockerfile.celery .")
 
                         /* Push the container to the custom Registry */
                         customImage.push()
