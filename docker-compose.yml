@@ -68,23 +68,23 @@ services:
       - database_network
       - grpc_network
   
-  grpc:
-    build:
-      context: .
-      dockerfile: ./dockerfiles/Dockerfile.grpc
+  # grpc:
+  #   build:
+  #     context: .
+  #     dockerfile: ./dockerfiles/Dockerfile.grpc
 
-    restart: always
-    volumes:
-      - .:/app
+  #   restart: always
+  #   volumes:
+  #     - .:/app
     
-    networks:
-      - net_api
-      - database_network
-      - grpc_network
-    ports:
-      - 50051:50051
-    depends_on:
-      - db
+  #   networks:
+  #     - net_api
+  #     - database_network
+  #     - grpc_network
+  #   ports:
+  #     - 50051:50051
+  #   depends_on:
+  #     - db
     
 
 networks:

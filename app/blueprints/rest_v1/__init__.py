@@ -7,5 +7,5 @@ api = Api(bp)
 
 
 def init_app(app):
-    api.add_resource(Retrieve, "/report")
+    api.add_resource(Retrieve, "/movies")
     app.register_blueprint(bp)

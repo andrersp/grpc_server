@@ -6,7 +6,6 @@ from datetime import datetime
 from app.app import celery
 from app.ext.responder import Responder
 from app.core.exceptions import CustomError, FatalError
-from app.models.target import ModelTarget
 from celery.exceptions import MaxRetriesExceededError
 
 

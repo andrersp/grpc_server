@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+message Genres {
+    int32 id = 1;
+    string name = 2;
+}
+
+message Movies {
+    bool adult = 1;
+    string language = 2;
+    string title = 3;
+    repeated Genres genres = 4;
+}
+
+message Data {
+    repeated Movies movies = 1;
+}
+
+message MessageResponse {
+    bool success = 1;
+}
+
+
+service UpdateMovies {
+    rpc Update (Data) returns (MessageResponse) {}
+}

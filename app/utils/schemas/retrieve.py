@@ -54,14 +54,18 @@ class ClearList(fields.Field):
         return value
 
 
-class RetrieveSchema(Schema):
-    class Meta:
+class Genres(Schema):
+    id = fields.Integer()
+    name = fields.String()
 
-        unknown = INCLUDE
-    cpf_cnpj = ClearRegister()
-    name = fields.String(required=True)
-    provinces = ClearProvince()
-    cities = ClearList()
-    target_id = fields.Integer(required=True)
-    service_id = fields.Integer(required=True)
-    webhook = fields.String(required=True)
+
+class Movie(Schema):
+    adult = fields.Boolean()
+    language = fields.String()
+    title = fields.String()
+    genres = fields.List(fields.Nested(Genres))
+
+
+class RetrieveSchema(Schema):
+
+    data = fields.List(fields.Nested(Movie))

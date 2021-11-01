@@ -21,7 +21,10 @@ class Retrieve(Resource):
         except ValidationError as e:
             return error(e.messages)
 
-        else:
-            requester.request.delay(data)
+        # for val in data.get("data"):
+        #     print(val)
+
+        # else:
+        #     requester.request.delay(data)
 
         return success(status_code=201)

@@ -19,4 +19,4 @@ RUN rm -rf /var/cache/apt/archives && rm -rf /var/lib/apt/lists/*
 
 COPY . ./
 
-CMD ["python", "grpc_server/server.py"]
+CMD ["python", "./app/grpc_server/server.py"]
