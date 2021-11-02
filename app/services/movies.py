@@ -24,7 +24,8 @@ class MoviesServiceServicer(movies_pb2_grpc.MoviesServiceServicer):
 
         movies_list = list(map(lambda x: {
             "title": x.title,
-            "adult": x.adult
+            "adult": x.adult,
+            "language": x.language
         }, movies))
 
         # print(movies_list)
