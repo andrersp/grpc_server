@@ -1,9 +1,10 @@
-from python:3.8-slim-buster
+from python:3.10-slim-buster
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 WORKDIR /app
+
 COPY ./requirements.txt /app
 
 RUN apt-get update && apt-get install libpq-dev gcc  -y
@@ -18,4 +19,5 @@ RUN rm -rf /var/cache/apt/archives && rm -rf /var/lib/apt/lists/*
 
 COPY . ./
 
-CMD ["gunicorn", "-w", "2", "--bind", ":5000", "grpc_server.app:create_app()"]
+
+CMD ["python", "./app/app.py"]

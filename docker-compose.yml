@@ -4,73 +4,37 @@ services:
   db:
     image: postgres:9.6-alpine
     volumes:
-      - grpc_server_data:/var/lib/postgresql/data/
+      - app_data:/var/lib/postgresql/data/
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
     environment:
-      - POSTGRES_USER=grpc_server
-      - POSTGRES_PASSWORD=grpc_server
+      - POSTGRES_USER=app
+      - POSTGRES_PASSWORD=app
     networks:
       - database_network
   
-  redis:
-    hostname: redis
-    image: redis:6-alpine
-    networks:
-      - redis_network
-      - net_api
-  
-  
-  rabbit:
-    hostname: rabbit
-    image: rabbitmq:3.8-alpine
-    environment:
-      - RABBITMQ_DEFAULT_USER=guest
-      - RABBITMQ_DEFAULT_PASSWORD=guest
-    ports:
-      - "5673:5672"
-    networks:
-      - net_api
-      - rabbit_network
-  
-  api:
+  grpc:
     build:
       context: .
-      dockerfile: ./dockerfiles/Dockerfile.develop
+      dockerfile: ./dockerfiles/Dockerfile
+    
+    env_file: .env
 
     restart: always
     volumes:
       - .:/app
     
     networks:
-      - net_api
       - database_network
+      - grpc_network
     ports:
-      - 5000:5000
+      - 50051:50051
     depends_on:
       - db
-  
-  celery:
-    build:
-      context: .
-      dockerfile: ./dockerfiles/Dockerfile.celery
-    restart: always    
-    volumes: 
-      - .:/app
-    links: 
-      - rabbit      
-    depends_on: 
-      - rabbit      
-    networks:  
-      - rabbit_network
-      - redis_network
-      - database_network
     
 
 networks:
-  net_api:
   database_network:
-  rabbit_network:
-  redis_network:
+  grpc_network:
 volumes:
-  grpc_server_data:
+  app_data:
