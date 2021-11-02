@@ -1,15 +1,20 @@
 # -*- coding: utf-8 -*-
 from sqlalchemy.dialects.postgresql import JSON, ARRAY
 
-from app.ext.database import db
-from sqlalchemy_serializer import SerializerMixin
+from sqlalchemy import Column, Integer, String, Boolean
+from ext.database import Base, Session
 
 
-class MoviesDb(db.Model, SerializerMixin):
-
+class MoviesDb(Base):
     __tablename__ = 'movies'
 
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(80))
-    adult = db.Column(db.Boolean)
-    genres = db.Column(ARRAY(JSON))
+    id = Column(Integer, primary_key=True)
+    title = Column(String())
+    adult = Column(Boolean)
+    language = Column(String(10))
+    genres = Column(ARRAY(JSON))
+
+    def save_movie(self):
+        session = Session()
+        session.add(self)
+        session.commit()

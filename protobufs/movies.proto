@@ -1,4 +1,5 @@
 syntax = "proto3";
+import "google/protobuf/empty.proto";
 
 message Genres {
     int32 id = 1;
@@ -20,7 +21,23 @@ message MessageResponse {
     bool success = 1;
 }
 
+message MoviesData {
+    bool adult = 1;
+    string language = 2;
+    string title = 3;
+}
 
-service UpdateMovies {
-    rpc Update (Data) returns (MessageResponse) {}
+message MoviesList {
+    repeated MoviesData movies = 1;
+}
+
+message MovieId {
+    int32 movie_id = 1;
+}
+
+
+service MoviesService {
+    rpc GetMovies(google.protobuf.Empty) returns (MoviesList) {}
+    rpc GetMovie(MovieId) returns (Movies) {}
+    rpc UpdateMovies (Data) returns (MessageResponse) {}
 }
