@@ -57,13 +57,15 @@ class MoviesServiceServicer(movies_pb2_grpc.MoviesServiceServicer):
         movie = session.query(MoviesDb).get(movie_id)
 
         if not movie:
-            context.abort(grpc.StatusCode.NOT_FOUND, "Movie not found")
+            return Movies(success=False)
 
         if movie:
-            return Movies(adult=movie.adult, title=movie.title, language=movie.language, genres=movie.genres)
+            return Movies(id=movie.id, adult=movie.adult, title=movie.title, language=movie.language, genres=movie.genres, success=True)
 
     def insert_movies(self, movies: list = []):
-
+        session = Session()
+        session.execute('TRUNCATE TABLE movies RESTART IDENTITY;')
+        session.commit()
         try:
             lst = []
             s = Session()

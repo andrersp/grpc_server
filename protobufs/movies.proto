@@ -39,11 +39,12 @@ message MoviesList {
 
 
 message Movies {
-    bool adult = 1;
-    string language = 2;
-    string title = 3;
-    repeated Genres genres = 4;
-    bool success = 5;
+    int32 id = 1;
+    bool adult = 2;
+    string language = 3;
+    string title = 4;
+    repeated Genres genres = 5;
+    bool success = 6;
 }
 
 message Data {

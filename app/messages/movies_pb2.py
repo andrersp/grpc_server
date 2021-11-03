@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0cmovies.proto\"\"\n\x06Genres\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\"\"\n\x0fMessageResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"\x1b\n\x07MovieId\x12\x10\n\x08movie_id\x18\x01 \x01(\x05\"-\n\x0eGetMoviesParam\x12\x0c\n\x04page\x18\x01 \x01(\x05\x12\r\n\x05limit\x18\x02 \x01(\x05\"Y\n\nMoviesData\x12\n\n\x02id\x18\x01 \x01(\x05\x12\r\n\x05\x61\x64ult\x18\x02 \x01(\x08\x12\x10\n\x08language\x18\x03 \x01(\t\x12\r\n\x05title\x18\x04 \x01(\t\x12\x0f\n\x07success\x18\x05 \x01(\x08\"\x88\x01\n\nMoviesList\x12\x1b\n\x06movies\x18\x01 \x03(\x0b\x32\x0b.MoviesData\x12\x13\n\x0b\x61\x63tual_page\x18\x02 \x01(\x05\x12\x13\n\x0btotal_pages\x18\x03 \x01(\x05\x12\r\n\x05itens\x18\x04 \x01(\x05\x12\x13\n\x0btotal_itens\x18\x05 \x01(\x03\x12\x0f\n\x07success\x18\x06 \x01(\x08\"b\n\x06Movies\x12\r\n\x05\x61\x64ult\x18\x01 \x01(\x08\x12\x10\n\x08language\x18\x02 \x01(\t\x12\r\n\x05title\x18\x03 \x01(\t\x12\x17\n\x06genres\x18\x04 \x03(\x0b\x32\x07.Genres\x12\x0f\n\x07success\x18\x05 \x01(\x08\"\x1f\n\x04\x44\x61ta\x12\x17\n\x06movies\x18\x01 \x03(\x0b\x32\x07.Movies2\x88\x01\n\rMoviesService\x12+\n\tGetMovies\x12\x0f.GetMoviesParam\x1a\x0b.MoviesList\"\x00\x12\x1f\n\x08GetMovie\x12\x08.MovieId\x1a\x07.Movies\"\x00\x12)\n\x0cUpdateMovies\x12\x05.Data\x1a\x10.MessageResponse\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x0cmovies.proto\"\"\n\x06Genres\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\"\"\n\x0fMessageResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"\x1b\n\x07MovieId\x12\x10\n\x08movie_id\x18\x01 \x01(\x05\"-\n\x0eGetMoviesParam\x12\x0c\n\x04page\x18\x01 \x01(\x05\x12\r\n\x05limit\x18\x02 \x01(\x05\"Y\n\nMoviesData\x12\n\n\x02id\x18\x01 \x01(\x05\x12\r\n\x05\x61\x64ult\x18\x02 \x01(\x08\x12\x10\n\x08language\x18\x03 \x01(\t\x12\r\n\x05title\x18\x04 \x01(\t\x12\x0f\n\x07success\x18\x05 \x01(\x08\"\x88\x01\n\nMoviesList\x12\x1b\n\x06movies\x18\x01 \x03(\x0b\x32\x0b.MoviesData\x12\x13\n\x0b\x61\x63tual_page\x18\x02 \x01(\x05\x12\x13\n\x0btotal_pages\x18\x03 \x01(\x05\x12\r\n\x05itens\x18\x04 \x01(\x05\x12\x13\n\x0btotal_itens\x18\x05 \x01(\x03\x12\x0f\n\x07success\x18\x06 \x01(\x08\"n\n\x06Movies\x12\n\n\x02id\x18\x01 \x01(\x05\x12\r\n\x05\x61\x64ult\x18\x02 \x01(\x08\x12\x10\n\x08language\x18\x03 \x01(\t\x12\r\n\x05title\x18\x04 \x01(\t\x12\x17\n\x06genres\x18\x05 \x03(\x0b\x32\x07.Genres\x12\x0f\n\x07success\x18\x06 \x01(\x08\"\x1f\n\x04\x44\x61ta\x12\x17\n\x06movies\x18\x01 \x03(\x0b\x32\x07.Movies2\x88\x01\n\rMoviesService\x12+\n\tGetMovies\x12\x0f.GetMoviesParam\x1a\x0b.MoviesList\"\x00\x12\x1f\n\x08GetMovie\x12\x08.MovieId\x1a\x07.Movies\"\x00\x12)\n\x0cUpdateMovies\x12\x05.Data\x1a\x10.MessageResponse\"\x00\x62\x06proto3'
 )
 
 
@@ -303,36 +303,43 @@ _MOVIES = _descriptor.Descriptor(
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='adult', full_name='Movies.adult', index=0,
-      number=1, type=8, cpp_type=7, label=1,
+      name='id', full_name='Movies.id', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='adult', full_name='Movies.adult', index=1,
+      number=2, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='language', full_name='Movies.language', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='title', full_name='Movies.title', index=2,
+      name='language', full_name='Movies.language', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='genres', full_name='Movies.genres', index=3,
-      number=4, type=11, cpp_type=10, label=3,
+      name='title', full_name='Movies.title', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='genres', full_name='Movies.genres', index=4,
+      number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='success', full_name='Movies.success', index=4,
-      number=5, type=8, cpp_type=7, label=1,
+      name='success', full_name='Movies.success', index=5,
+      number=6, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -350,7 +357,7 @@ _MOVIES = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=394,
-  serialized_end=492,
+  serialized_end=504,
 )
 
 
@@ -381,8 +388,8 @@ _DATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=494,
-  serialized_end=525,
+  serialized_start=506,
+  serialized_end=537,
 )
 
 _MOVIESLIST.fields_by_name['movies'].message_type = _MOVIESDATA
@@ -463,8 +470,8 @@ _MOVIESSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=528,
-  serialized_end=664,
+  serialized_start=540,
+  serialized_end=676,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetMovies',
