@@ -32,7 +32,6 @@ class MoviesServiceServicer(movies_pb2_grpc.MoviesServiceServicer):
             query = query.offset((page - 1) * limit)
         query = query.limit(limit)
 
-        print(f'page {page} de {total_page}')
         movies = query.all()
 
         movies_list = list(map(lambda x: {
