@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import grpc
 from messages.movies_pb2 import MessageResponse, MoviesList, Movies
 import messages.movies_pb2_grpc as movies_pb2_grpc
 from ext.database import Session
@@ -19,18 +20,35 @@ class MoviesServiceServicer(movies_pb2_grpc.MoviesServiceServicer):
 
     def GetMovies(self, request, context):
 
+        page = request.page or 1
+        limit = request.limit or 20
+
         session = Session()
-        movies = session.query(MoviesDb).all()
+        query = session.query(MoviesDb)
+        total = query.count()
+        total_page = int(total / limit)
+
+        if page > 1:
+            query = query.offset((page - 1) * limit)
+        query = query.limit(limit)
+
+        movies = query.all()
 
         movies_list = list(map(lambda x: {
+            "id": x.id,
             "title": x.title,
             "adult": x.adult,
             "language": x.language
         }, movies))
 
-        # print(movies_list)
+        result = {"movies": movies_list,
+                  "actual_page": page,
+                  "total_pages": total_page,
+                  "itens": query.count(),
+                  "total_itens": total,
+                  "success": True}
 
-        return MoviesList(movies=movies_list)
+        return MoviesList(**result)
 
     def GetMovie(self, request, context):
         movie_id = request.movie_id
@@ -38,11 +56,16 @@ class MoviesServiceServicer(movies_pb2_grpc.MoviesServiceServicer):
         session = Session()
         movie = session.query(MoviesDb).get(movie_id)
 
+        if not movie:
+            return Movies(success=False)
+
         if movie:
-            return Movies(adult=movie.adult, title=movie.title, language=movie.language, genres=movie.genres)
+            return Movies(id=movie.id, adult=movie.adult, title=movie.title, language=movie.language, genres=movie.genres, success=True)
 
     def insert_movies(self, movies: list = []):
-
+        session = Session()
+        session.execute('TRUNCATE TABLE movies RESTART IDENTITY;')
+        session.commit()
         try:
             lst = []
             s = Session()
