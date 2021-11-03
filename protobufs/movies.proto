@@ -1,43 +1,58 @@
 syntax = "proto3";
-import "google/protobuf/empty.proto";
 
 message Genres {
     int32 id = 1;
     string name = 2;
 }
 
-message Movies {
-    bool adult = 1;
-    string language = 2;
-    string title = 3;
-    repeated Genres genres = 4;
-}
 
-message Data {
-    repeated Movies movies = 1;
-}
 
 message MessageResponse {
     bool success = 1;
-}
-
-message MoviesData {
-    bool adult = 1;
-    string language = 2;
-    string title = 3;
-}
-
-message MoviesList {
-    repeated MoviesData movies = 1;
 }
 
 message MovieId {
     int32 movie_id = 1;
 }
 
+message GetMoviesParam {
+    int32 page = 1;
+    int32 limit = 2;
+}
+
+message MoviesData {
+    int32 id = 1;
+    bool adult = 2;
+    string language = 3;
+    string title = 4;
+    bool success = 5;    
+}
+
+message MoviesList {
+    repeated MoviesData movies = 1;
+    int32 actual_page = 2;
+    int32 total_pages = 3;
+    int32 itens = 4;
+    int64 total_itens = 5;
+    bool success = 6;
+}
+
+
+message Movies {
+    bool adult = 1;
+    string language = 2;
+    string title = 3;
+    repeated Genres genres = 4;
+    bool success = 5;
+}
+
+message Data {
+    repeated Movies movies = 1;
+}
+
 
 service MoviesService {
-    rpc GetMovies(google.protobuf.Empty) returns (MoviesList) {}
+    rpc GetMovies(GetMoviesParam) returns (MoviesList) {}
     rpc GetMovie(MovieId) returns (Movies) {}
     rpc UpdateMovies (Data) returns (MessageResponse) {}
 }
