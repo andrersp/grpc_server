@@ -57,6 +57,9 @@ class MoviesServiceServicer(movies_pb2_grpc.MoviesServiceServicer):
         movie = session.query(MoviesDb).get(movie_id)
 
         if not movie:
+            msg = "Movie not found!"
+            context.set_details(msg)
+            context.set_code(grpc.StatusCode.NOT_FOUND)
             return Movies(success=False)
 
         if movie:
